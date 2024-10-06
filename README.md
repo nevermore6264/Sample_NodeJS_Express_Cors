@@ -19,7 +19,7 @@ npm init -y
 
 Lệnh này sẽ tạo ra một tệp package.json với các thiết lập mặc định.
 
-Bước 4: Cài Đặt Express
+## Bước 4: Cài Đặt Express
 
 ```
 npm install express
