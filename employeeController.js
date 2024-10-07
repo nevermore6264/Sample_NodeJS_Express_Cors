@@ -1,5 +1,3 @@
-// employeeController.js
-
 // Sample data
 let items = [
   {
@@ -37,6 +35,13 @@ const getAllEmployees = (req, res) => {
   res.json(items);
 };
 
+// Get one
+const getEmployee = (req, res) => {
+  const itemId = parseInt(req.params.id);
+  const item = items.find((item) => item.id === itemId);
+  res.json(item);
+};
+
 // Update
 const updateEmployee = (req, res) => {
   const itemId = parseInt(req.params.id);
@@ -47,14 +52,15 @@ const updateEmployee = (req, res) => {
 
 // Delete
 const deleteEmployee = (req, res) => {
-  const emailId = req.params.emailId;
-  items = items.filter((item) => item.emailId !== emailId);
+  const id = req.params.id;
+  items = items.filter((item) => item.id !== id);
   res.sendStatus(204);
 };
 
 module.exports = {
   insertEmployee,
   getAllEmployees,
+  getEmployee,
   updateEmployee,
   deleteEmployee,
 };
