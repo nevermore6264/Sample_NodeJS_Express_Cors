@@ -28,7 +28,8 @@ const insertEmployee = (req, res) => {
   const newItem = req.body;
 
   const lastItem = items[items.length - 1];
-  newItem.id = lastItem ? lastItem.id + 1 : 1; // Start with ID 1 if items is empty
+  newItem.id = parseInt(lastItem ? lastItem.id + 1 : 1); // Start with ID 1 if items is empty
+  newItem.salary = parseInt(newItem.salary);
 
   items.push(newItem);
   res.status(201).json(newItem);
@@ -56,8 +57,8 @@ const updateEmployee = (req, res) => {
 
 // Delete
 const deleteEmployee = (req, res) => {
-  const id = req.params.id;
-  items = items.filter((item) => item.id !== id);
+  const id = parseInt(req.params.id);
+  items = items.filter((item) => parseInt(item.id) !== id);
   res.sendStatus(204);
 };
 
