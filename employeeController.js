@@ -26,6 +26,10 @@ let items = [
 // Create
 const insertEmployee = (req, res) => {
   const newItem = req.body;
+
+  const lastItem = items[items.length - 1];
+  newItem.id = lastItem ? lastItem.id + 1 : 1; // Start with ID 1 if items is empty
+
   items.push(newItem);
   res.status(201).json(newItem);
 };
